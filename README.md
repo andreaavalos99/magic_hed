@@ -34,7 +34,7 @@ El proyecto se construye de forma incremental. La idea es mostrar el proceso y l
 
 ---
 
-## 🛠️ Tecnologías
+## Tecnologías
 
 **Backend**
 - Java 17
