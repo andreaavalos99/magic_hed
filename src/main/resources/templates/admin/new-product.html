@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Nuevo producto | Admin</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="logo-dot"></div>
+        <a class="brand-title" th:href="@{/admin}">ADMIN</a>
+    </div>
+    <nav class="nav">
+        <a th:href="@{/admin}">Volver</a>
+        <a th:href="@{/store}">Tienda</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1 class="section-title">Crear producto</h1>
+
+    <form class="panel" th:action="@{/admin/products}" th:object="${product}" method="post">
+        <div style="display:grid; gap:12px;">
+            <label>
+                Nombre
+                <input class="input" th:field="*{name}" placeholder="Sticker Pack - Magic Hed"/>
+            </label>
+            <div th:if="${#fields.hasErrors('name')}" class="muted-text" th:errors="*{name}"></div>
+
+            <label>
+                Descripción
+                <textarea class="input" th:field="*{description}" rows="4" placeholder="Detalles del producto..."></textarea>
+            </label>
+
+            <label>
+                Precio ARS
+                <input class="input" th:field="*{priceArs}" placeholder="4500"/>
+            </label>
+            <div th:if="${#fields.hasErrors('priceArs')}" class="muted-text" th:errors="*{priceArs}"></div>
+
+            <label>
+                Imagen URL
+                <input class="input" th:field="*{imageUrl}" placeholder="https://..."/>
+            </label>
+            <div th:if="${#fields.hasErrors('imageUrl')}" class="muted-text" th:errors="*{imageUrl}"></div>
+
+            <label>
+                Nota (producción/preorden)
+                <input class="input" th:field="*{productionNote}" placeholder="Producción: 1–2 semanas"/>
+            </label>
+
+            <label style="display:flex; gap:10px; align-items:center;">
+                <input type="checkbox" th:field="*{preorder}"/>
+                Preorden
+            </label>
+
+            <label style="display:flex; gap:10px; align-items:center;">
+                <input type="checkbox" th:field="*{active}"/>
+                Activo
+            </label>
+
+            <button class="btn" type="submit">Guardar</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

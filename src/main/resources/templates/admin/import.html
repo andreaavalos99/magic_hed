@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Importar CSV | Admin</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="logo-dot"></div>
+        <a class="brand-title" th:href="@{/admin}">ADMIN</a>
+    </div>
+    <nav class="nav">
+        <a th:href="@{/admin}">Productos</a>
+        <a th:href="@{/store}">Tienda</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1 class="section-title">Importar productos desde CSV</h1>
+
+    <div class="panel">
+        <p class="muted-text">Formato requerido (header):</p>
+        <code>name,description,priceArs,imageUrl,preorder,productionNote,active</code>
+        <p class="muted-text">Tip: podés exportar CSV desde Excel/Sheets.</p>
+    </div>
+
+    <form class="panel" th:action="@{/admin/import}" method="post" enctype="multipart/form-data">
+        <label class="muted-text">Archivo CSV</label><br/>
+        <input class="input" type="file" name="file" accept=".csv,text/csv"/><br/><br/>
+        <button class="btn" type="submit">Importar</button>
+    </form>
+</main>
+</body>
+</html>

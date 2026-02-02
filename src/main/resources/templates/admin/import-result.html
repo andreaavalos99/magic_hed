@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Resultado importación | Admin</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="logo-dot"></div>
+        <a class="brand-title" th:href="@{/admin}">ADMIN</a>
+    </div>
+    <nav class="nav">
+        <a th:href="@{/admin}">Productos</a>
+        <a th:href="@{/admin/import}">Importar otro</a>
+        <a th:href="@{/store}">Tienda</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1 class="section-title">Resultado</h1>
+
+    <div class="panel">
+        <p>Productos creados: <b th:text="${created}"></b></p>
+
+        <div th:if="${errors != null && !#lists.isEmpty(errors)}">
+            <p class="muted-text">Errores (no frenan toda la importación):</p>
+            <ul>
+                <li th:each="e : ${errors}" th:text="${e}"></li>
+            </ul>
+        </div>
+
+        <div th:if="${errors == null || #lists.isEmpty(errors)}">
+            <p class="muted-text">Sin errores ✅</p>
+        </div>
+
+        <a class="btn" th:href="@{/admin}">Ver productos</a>
+    </div>
+</main>
+</body>
+</html>

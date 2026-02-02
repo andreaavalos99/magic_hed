@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Magic Hed</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="logo-dot"></div>
+        <span class="brand-title">MAGIC HED</span>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <h1>Bienvenida ✨</h1>
+        <p>Elegí a dónde querés ir.</p>
+    </section>
+
+    <section class="grid-3">
+        <a class="card" th:href="@{/store}">
+            <h2>🛍️ Tiendita online</h2>
+            <p>Productos, prints, stickers y más.</p>
+            <span class="pill">Entrar</span>
+        </a>
+
+        <a class="card muted" th:href="@{/commissions}">
+            <h2>📝 Comisiones</h2>
+            <p>Próximamente: sistema de turnos y pedidos.</p>
+            <span class="pill pill-muted">Próximamente</span>
+        </a>
+
+        <a class="card muted" th:href="@{/about}">
+            <h2>💜 Info personal</h2>
+            <p>Próximamente: sobre mí y contacto.</p>
+            <span class="pill pill-muted">Próximamente</span>
+        </a>
+    </section>
+</main>
+
+<footer class="footer">
+    <span>© Magic Hed</span>
+</footer>
+</body>
+</html>

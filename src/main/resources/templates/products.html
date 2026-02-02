@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Magic Hed | Productos</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="logo-dot"></div>
+        <a class="brand-title" th:href="@{/}">MAGIC HED</a>
+    </div>
+    <nav class="nav">
+        <a th:href="@{/store}">Inicio</a>
+        <a th:href="@{/store/products}">Productos</a>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="row">
+        <h1 class="section-title">Productos</h1>
+    </div>
+
+    <form class="search" method="get" th:action="@{/store/products}">
+        <input name="q" th:value="${q}" placeholder="Buscar (stickers, prints...)">
+        <button class="btn" type="submit">Buscar</button>
+    </form>
+
+    <section class="product-grid">
+        <article class="product-card" th:each="p : ${products}">
+            <a class="product-img" th:href="@{/store/products/{id}(id=${p.id})}">
+                <img th:src="${p.imageUrl}" th:alt="${p.name}">
+            </a>
+
+            <div class="product-body">
+                <div class="product-top">
+                    <h3 th:text="${p.name}"></h3>
+                    <span class="tag" th:if="${p.preorder}">Preorden</span>
+                </div>
+                <p class="muted-text" th:text="${p.productionNote}"></p>
+                <div class="price-row">
+                    <span class="price">$<span th:text="${p.priceArs}"></span> ARS</span>
+                    <a class="btn-sm" th:href="@{/store/products/{id}(id=${p.id})}">Ver</a>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+</body>
+</html>

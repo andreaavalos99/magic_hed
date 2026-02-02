@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Admin | Magic Hed</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="logo-dot"></div>
+        <a class="brand-title" th:href="@{/}">MAGIC HED</a>
+    </div>
+    <nav class="nav">
+        <a th:href="@{/store}">Tienda</a>
+        <a th:href="@{/admin/products/new}">+ Nuevo producto</a>
+        <a th:href="@{/admin/import}">Importar CSV</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1 class="section-title">Admin</h1>
+    <p class="muted-text">Productos cargados: <span th:text="${#lists.size(products)}"></span></p>
+
+    <div class="panel" th:if="${#lists.isEmpty(products)}">
+        <p>No hay productos todavía. Creá el primero 😊</p>
+        <a class="btn" th:href="@{/admin/products/new}">Crear producto</a>
+    </div>
+
+    <div class="panel" th:if="${!#lists.isEmpty(products)}">
+        <ul>
+            <li th:each="p : ${products}">
+                <b th:text="${p.name}"></b>
+                — $<span th:text="${p.priceArs}"></span> ARS
+                <span th:if="${p.preorder}"> (Preorden)</span>
+            </li>
+        </ul>
+    </div>
+</main>
+</body>
+</html>

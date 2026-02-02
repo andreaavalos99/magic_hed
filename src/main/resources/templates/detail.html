@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title th:text="${product.name} + ' | Magic Hed'"></title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        <div class="logo-dot"></div>
+        <a class="brand-title" th:href="@{/}">MAGIC HED</a>
+    </div>
+    <nav class="nav">
+        <a th:href="@{/store/products}">← Volver</a>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="detail">
+        <div class="detail-img">
+            <img th:src="${product.imageUrl}" th:alt="${product.name}">
+        </div>
+
+        <div class="detail-info">
+            <div class="product-top">
+                <h1 th:text="${product.name}"></h1>
+                <span class="tag" th:if="${product.preorder}">Preorden</span>
+            </div>
+
+            <p class="muted-text" th:text="${product.productionNote}"></p>
+            <p th:text="${product.description}"></p>
+
+            <div class="price-row">
+                <span class="price big">$<span th:text="${product.priceArs}"></span> ARS</span>
+            </div>
+
+            <div class="panel">
+                <p class="muted-text">Carrito y checkout: siguiente parte ✨</p>
+                <a class="btn" th:href="@{/store}">Volver a la tienda</a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
